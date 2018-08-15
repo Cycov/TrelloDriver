@@ -17,7 +17,6 @@ namespace TrelloDriver.Components
         private string m_name;
 
         public List<Card> Cards;
-        public event EventHandler OnInitialised;
 
         private Board parent;
 
@@ -27,7 +26,6 @@ namespace TrelloDriver.Components
             Id = id;
             parent = null;
             Cards = new List<Card>();
-            OnInitialised?.Invoke(this, EventArgs.Empty);
         }
         public List(string name, string id, Board parent)
         {
@@ -35,7 +33,6 @@ namespace TrelloDriver.Components
             Id = id;
             this.parent = parent;
             Cards = new List<Card>();
-            OnInitialised?.Invoke(this, EventArgs.Empty);
         }
 
         public override string ToString()

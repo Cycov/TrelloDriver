@@ -21,16 +21,48 @@ namespace TrelloDriver.Components
         }
         private string m_name;
 
+        public Member AssignedMember
+        {
+            get
+            {
+                if (m_member == null)
+                    throw new Exceptions.TrelloDriverConfigurationException("The user is not set");
+                else
+                    return m_member;
+            }
+
+            protected set
+            {
+                m_member = value;
+            }
+        }
+        private Member m_member;
+
         public Dictionary<string, List> Lists;
-        public event EventHandler OnInitialised;
 
         public TrelloConnectionInfo ConnectionInfo { get; protected set; }
-        
+
         public Board(string id, TrelloConnectionInfo connectionInfo)
         {
             Id = id;
             ConnectionInfo = connectionInfo;
             m_name = GetBoardName(id);
+            Refresh();
+        }
+        public Board(string id, string memberId, TrelloConnectionInfo connectionInfo)
+        {
+            Id = id;
+            ConnectionInfo = connectionInfo;
+            m_name = GetBoardName(id);
+            m_member = new Member(memberId, connectionInfo);
+            Refresh();
+        }
+        public Board(string id, Member member, TrelloConnectionInfo connectionInfo)
+        {
+            Id = id;
+            ConnectionInfo = connectionInfo;
+            m_name = GetBoardName(id);
+            m_member = member;
             Refresh();
         }
 
@@ -63,8 +95,6 @@ namespace TrelloDriver.Components
                             var list = new List(name, id, this);
                             Lists.Add(name, list);
                         }
-                        if (Lists.Count == 0)
-                            OnInitialised?.Invoke(this, EventArgs.Empty);
                     }
                     catch (Exception ex)
                     {
@@ -74,7 +104,7 @@ namespace TrelloDriver.Components
                 }
 
                 // TODO: Make asyncronous and have events
-                string uri = String.Format("https://api.trello.com/1/search?query=member:{0}%20board:{1}%20is:open%20sort:edited&card_fields=name,shortLink,idList&cards_limit=100&key={3}&token={4}", ConnectionInfo.UserID, Id, m_name, ConnectionInfo.Key, ConnectionInfo.Token);
+                string uri = String.Format("https://api.trello.com/1/search?query=member:{0}%20board:{1}%20is:open%20sort:edited&card_fields=name,shortLink,idList&cards_limit=100&key={3}&token={4}", m_member.Id, Id, m_name, ConnectionInfo.Key, ConnectionInfo.Token);
                 data = http.GetStringAsync(uri).Result;
 
                 try

@@ -8,7 +8,6 @@ namespace TrelloDriver.Components
 {
     interface ITrelloObject
     {
-        event EventHandler OnInitialised;
         string Id
         {
             get;

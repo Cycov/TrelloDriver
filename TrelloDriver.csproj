@@ -45,12 +45,13 @@
   <ItemGroup>
     <Compile Include="Exceptions\TrelloDriverRequestException.cs" />
     <Compile Include="Trello.cs" />
+    <Compile Include="Components\Member.cs" />
     <Compile Include="TrelloConnectionInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrelloComponents\Board.cs" />
-    <Compile Include="TrelloComponents\Card.cs" />
-    <Compile Include="TrelloComponents\ITrelloObject.cs" />
-    <Compile Include="TrelloComponents\List.cs" />
+    <Compile Include="Components\Board.cs" />
+    <Compile Include="Components\Card.cs" />
+    <Compile Include="Components\ITrelloObject.cs" />
+    <Compile Include="Components\List.cs" />
     <Compile Include="Exceptions\TrelloDriverConfigurationException.cs" />
   </ItemGroup>
   <ItemGroup>

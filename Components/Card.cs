@@ -9,7 +9,6 @@ namespace TrelloDriver.Components
 {
     public class Card : ITrelloObject
     {
-        public event EventHandler OnInitialised;
         public string Id { get; }
         public string Name {
             get => m_name;
@@ -35,7 +34,7 @@ namespace TrelloDriver.Components
 
         public void Refresh()
         {
-            OnInitialised?.Invoke(this, EventArgs.Empty);
+
         }
 
         public async void MoveCard(List newList)
