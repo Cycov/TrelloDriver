@@ -35,15 +35,26 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Actions\Action.cs" />
+    <Compile Include="Components\Actions\Comment.cs" />
+    <Compile Include="Components\ComponentsProperties.cs" />
     <Compile Include="Exceptions\TrelloDriverRequestException.cs" />
+    <Compile Include="Forms\TrelloCardDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TrelloCardDisplay.Designer.cs">
+      <DependentUpon>TrelloCardDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trello.cs" />
     <Compile Include="Components\Member.cs" />
     <Compile Include="TrelloConnectionInfo.cs" />
@@ -53,10 +64,16 @@
     <Compile Include="Components\ITrelloObject.cs" />
     <Compile Include="Components\List.cs" />
     <Compile Include="Exceptions\TrelloDriverConfigurationException.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\TrelloCardDisplay.resx">
+      <DependentUpon>TrelloCardDisplay.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

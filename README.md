@@ -6,3 +6,7 @@ It uses MongoBD.Bson for parsing incoming json data.
 No documentation availibile at the moment.
 
 To use the driver for now you will need to provide both a key and a token, authentification are planned. Token and key can be obtained from https://trello.com/app-key . You need to go to "Token" link to gte the token.
+
+TODO: add request error handling like in Card.cs for all Trello driver classes
+
+Still Work in progress, more work required on action section
