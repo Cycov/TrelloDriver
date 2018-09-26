@@ -69,11 +69,15 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="README.md" />
+    <None Include="TrelloDriver.licenseheader" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\TrelloCardDisplay.resx">
       <DependentUpon>TrelloCardDisplay.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
